@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export const SearchBar = ({ onSearch }) => {
   const handleSearch = e => {
     e.preventDefault();
-    onSearch(e.target.elements.pictureName.value);
+    onSearch(e.target.elements.pictureName.value.toLowerCase());
   };
 
   return (

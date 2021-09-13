@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch }) => {
   const handleSearch = e => {
     e.preventDefault();
     onSearch(e.target.elements.pictureName.value.toLowerCase());
@@ -16,14 +16,17 @@ export const SearchBar = ({ onSearch }) => {
         <input
           className="SearchForm-input"
           type="text"
-          autocomplete="off"
-          autofocus
+          name="pictureName"
+          autoComplete="off"
+          autoFocus
           placeholder="Search images and photos"
         />
       </form>
     </header>
   );
 };
+
+export default SearchBar;
 
 SearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired,

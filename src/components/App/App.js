@@ -1,13 +1,13 @@
 import { Component } from 'react';
-
+// import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { FetchPictures } from '../services/api';
-import { SearchBar } from '../Searchbar/Searchbar';
-import { ImageGallery } from '../ImageGallery/ImageGallery';
+import { fetchPictures } from '../services/api';
+import SearchBar from '../SearchBar/SearchBar';
+import ImageGallery from '../ImageGallery/ImageGallery';
 import Button from '../Button/Button';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
-
+import '../Styles/styles.css';
 import './App.css';
 
 export default class App extends Component {
@@ -20,6 +20,14 @@ export default class App extends Component {
     showModal: false,
   };
 
+  //    fetchPictures = async (pictureName, page) => {
+  //   const keyApi = '22617887-a3f68d8335d469bb4f11f2290';
+  //   const response = await axios.get(
+  //     `https://pixabay.com/api/?q=${pictureName}&page=${page}&key=${keyApi}&image_type=photo&orientation=horizontal&per_page=12`,
+  //   );
+  //   return response.data.hits;
+  //  };
+
   async componentDidUpdate(_, prevState) {
     const nextSearch = this.state.pictureName;
     const nextPage = this.state.page;
@@ -27,7 +35,7 @@ export default class App extends Component {
       try {
         this.setState({ reqStatus: 'pending' });
 
-        const pictures = await FetchPictures(nextSearch, nextPage);
+        const pictures = await fetchPictures(nextSearch, nextPage);
         this.setState(prevState => ({
           pictures: [...prevState.pictures, ...pictures],
           reqStatus: 'resolved',

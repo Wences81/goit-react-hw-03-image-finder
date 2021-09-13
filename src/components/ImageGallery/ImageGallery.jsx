@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem/imageGalleryItem';
+import PropTypes from 'prop-types';
 
-export const ImageGallery = ({ pictures, onSelect }) => {
+const ImageGallery = ({ pictures, onSelect }) => {
   return (
     <ul className="ImageGallery">
       {pictures.map((picture, id) => (
@@ -11,10 +11,11 @@ export const ImageGallery = ({ pictures, onSelect }) => {
           onClic={() => onSelect(picture)}
         ></ImageGalleryItem>
       ))}
-      ;
     </ul>
   );
 };
+
+export default ImageGallery;
 
 ImageGallery.propTypes = {
   pictures: PropTypes.arrayOf(

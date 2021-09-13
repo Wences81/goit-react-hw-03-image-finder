@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export default function Button({ onClick }) {
+function Button({ onClick }) {
   return (
     <button type="button" onClick={onClick} className="Button">
       Load more
@@ -8,10 +8,12 @@ export default function Button({ onClick }) {
   );
 }
 
-window.scrollTo({
-  top: document.documentElement.scrollHeight,
-  behavior: 'smooth',
-});
+// window.scrollTo({
+//   top: document.documentElement.scrollHeight,
+//   behavior: 'smooth',
+// });
+
+export default Button;
 
 Button.propTypes = {
   onClick: PropTypes.func.isRequired,

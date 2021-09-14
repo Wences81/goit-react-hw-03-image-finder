@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import { fetchPictures } from '../services/api';
 import SearchBar from '../SearchBar/SearchBar';
@@ -7,7 +6,7 @@ import ImageGallery from '../ImageGallery/ImageGallery';
 import Button from '../Button/Button';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
-import '../image-styles/styles.css';
+import '../Styles/styles.css';
 import './App.css';
 
 export default class App extends Component {
@@ -19,14 +18,6 @@ export default class App extends Component {
     page: 1,
     showModal: false,
   };
-
-  //    fetchPictures = async (pictureName, page) => {
-  //   const keyApi = '22617887-a3f68d8335d469bb4f11f2290';
-  //   const response = await axios.get(
-  //     `https://pixabay.com/api/?q=${pictureName}&page=${page}&key=${keyApi}&image_type=photo&orientation=horizontal&per_page=12`,
-  //   );
-  //   return response.data.hits;
-  //  };
 
   async componentDidUpdate(_, prevState) {
     const nextSearch = this.state.pictureName;
@@ -87,7 +78,7 @@ export default class App extends Component {
 
   render() {
     const { pictures, reqStatus, selectedImg, showModal } = this.state;
-    const showButton = pictures.length >= 1;
+    const showButton = pictures.length >= 12;
 
     return (
       <div>

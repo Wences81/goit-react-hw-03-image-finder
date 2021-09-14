@@ -2,18 +2,18 @@ import { Component } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.getElementById('modal-root');
 
 export default class Modal extends Component {
   componentDidMount() {
-    window.addEventListener('keydown', this.hendleKeyDown);
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.hendleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  hendleKeyDown = e => {
+  handleKeyDown = e => {
     if (e.code === 'Escape') {
       this.props.onClose();
     }

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import s from './SearchBar.module.css';
 
 const SearchBar = ({ onSearch }) => {
   const handleSearch = e => {
@@ -7,14 +8,14 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <header className="Searchbar">
-      <form className="SearchForm" onSubmit={handleSearch}>
-        <button type="submit" className="SearchForm-button">
-          <span className="SearchForm-button-label">Search</span>
+    <header className={s.Searchbar}>
+      <form className={s.SearchForm} onSubmit={handleSearch}>
+        <button type="submit" className={s.SearchFormbutton}>
+          <span className={s.SearchFormbuttonlabel}>Search</span>
         </button>
 
         <input
-          className="SearchForm-input"
+          className={s.SearchForminput}
           type="text"
           name="pictureName"
           autoComplete="off"

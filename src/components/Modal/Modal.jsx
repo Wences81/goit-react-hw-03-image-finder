@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import s from './Modal.module.css';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -29,8 +30,8 @@ export default class Modal extends Component {
     const { src, alt } = this.props;
 
     return createPortal(
-      <div className="Overlay" onClick={this.handleBackdropClick}>
-        <div className="Modal">
+      <div className={s.Overlay} onClick={this.handleBackdropClick}>
+        <div className={s.Modal}>
           <img src={src} alt={alt} />
         </div>
       </div>,

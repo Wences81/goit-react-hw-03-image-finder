@@ -1,15 +1,12 @@
-import ImageGalleryItem from '../ImageGalleryItem/imageGalleryItem';
+import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
+import s from './ImageGallery.module.css';
 
 const ImageGallery = ({ pictures, onSelect }) => {
   return (
-    <ul className="ImageGallery">
+    <ul className={s.ImageGallery}>
       {pictures.map((picture, id) => (
-        <ImageGalleryItem
-          key={id}
-          image={picture}
-          onClic={() => onSelect(picture)}
-        />
+        <ImageGalleryItem key={id} image={picture} onSelect={onSelect} />
       ))}
     </ul>
   );

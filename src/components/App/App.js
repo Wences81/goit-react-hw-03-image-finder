@@ -1,13 +1,12 @@
 import { Component } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { fetchPictures } from '../services/api';
+import { fetchPictures } from '../../services/api';
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Button from '../Button/Button';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
-import '../Styles/styles.css';
-import './App.css';
+import './App.module.css';
 
 export default class App extends Component {
   state = {
@@ -60,10 +59,10 @@ export default class App extends Component {
     }));
   };
 
-  handleSelectedImage = largeImageUrl => {
+  handleSelectedImage = LageImageURL => {
     this.setState(prevState => ({
       showModal: !prevState.showModal,
-      selectedImg: largeImageUrl,
+      selectedImg: LageImageURL,
     }));
   };
 
@@ -88,7 +87,7 @@ export default class App extends Component {
         {showButton && <Button onClick={this.loadMoreButtonClick} />}
         {showModal && (
           <Modal
-            src={selectedImg.largeImageUrl}
+            src={this.state.selectedImg}
             alt={selectedImg.tags}
             onClose={this.toggleModal}
           />

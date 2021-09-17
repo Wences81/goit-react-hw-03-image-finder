@@ -10,7 +10,7 @@ import './App.module.css';
 
 export default class App extends Component {
   state = {
-    pictureName: '',
+    pictureName: null,
     pictures: [],
     selectedImg: null,
     reqStatus: 'idle',
@@ -21,11 +21,13 @@ export default class App extends Component {
   async componentDidUpdate(_, prevState) {
     const nextSearch = this.state.pictureName;
     const nextPage = this.state.page;
+
     if (prevState.pictureName !== nextSearch || prevState.page !== nextPage) {
       try {
         this.setState({ reqStatus: 'pending' });
 
         const pictures = await fetchPictures(nextSearch, nextPage);
+
         this.setState(prevState => ({
           pictures: [...prevState.pictures, ...pictures],
           reqStatus: 'resolved',
@@ -85,6 +87,7 @@ export default class App extends Component {
         <SearchBar onSearch={this.handleFormSubmit} />
         <ImageGallery pictures={pictures} onSelect={this.handleSelectedImage} />
         {showButton && <Button onClick={this.loadMoreButtonClick} />}
+        {reqStatus === 'pending' && <Loader />}
         {showModal && (
           <Modal
             src={this.state.selectedImg}
@@ -92,7 +95,6 @@ export default class App extends Component {
             onClose={this.toggleModal}
           />
         )}
-        {reqStatus === 'pending' && <Loader />}
       </div>
     );
   }
